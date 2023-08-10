@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    
+    margin-bottom: 4rem;
+}
+
+
+.row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5rem;
+
+}
+.col input{
+    margin-bottom: 0.5rem;
+}
+.inputWithIcon {
+    display: flex;
+    flex-direction: row;
+    vertical-align: center;
+}
+.inputWithIcon span {
+    padding-top: 0.4rem;
+    margin-right: 0.4rem;
+}
+.btnStudentRegister {
+    margin-top: 1rem;
+}
