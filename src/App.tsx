@@ -1,13 +1,17 @@
-import { LoginScreen } from "./screens/login/LoginScreen"
+import { BrowserRouter } from "react-router-dom"
+import { Router } from "./Router"
+import { ThemeProvider} from 'styled-components'
+import { DefaultTheme } from "./styles/theme/default"
+import { GlobalStyle } from "./styles/global"
 
 
-function App() {
-
+export function App() {
   return (
-    <>
-      <LoginScreen></LoginScreen>
-    </>
+    <ThemeProvider theme={DefaultTheme}>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+      <GlobalStyle />
+    </ThemeProvider>
   )
 }
-
-export default App
