@@ -1,67 +1,59 @@
-import style from './LoginForm.module.css'
-import logo from '/images/logo-verde.png'
-import RegisterChooseModal from '../ChooseRegisterType/ChooseRegisterType'
-import { ChangeEvent, InvalidEvent, useState } from 'react';
-import { Modal } from '../Modal/Modal';
-import { ButtonEnter, ContainerInputs, FormLogin, InforText, LogoTCCEasier, RedirectForSignUp } from './style';
+import logo from '../../../public/images/logo-verde.png'
+
+import { ButtonEnter, ContainerInputs, FormLogin, InforText, LogoTCCEasier, MessageEmailError, RedirectForSignUp } from './style';
+import { useForm } from 'react-hook-form';
+import * as zod from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod';
+
+
+const newLoginSchema = zod.object({
+    email: zod.string().min(1, "Você precisa informar um E-mail.")
+    .email("E-mail inválido"),
+    password:zod.string().min(8, "A senha deve ter ao menos 8 caracteres."),
+})
+
+type FormProps = zod.infer<typeof newLoginSchema>
 
 export function LoginForm() {
-    const [ openModal, setOpenModal] = useState(false);
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    function handleClickRegister(){
-        setOpenModal(true);
-    }
-    function PasswordIsValid(){
-        if(password.length >= 8){
-            return true
-        }else{
-            return false
-        }
-    }
-    function handleClickSignIn(){
-        if(PasswordIsValid()){
-            alert('valido')
-        }else{
-            alert('invalido')
-        }
-    }
-    function handleEmailChange(event:ChangeEvent<HTMLInputElement>){
-        setEmail(event.target.value)
-    }
-    function handlePasswordChange(event:ChangeEvent<HTMLInputElement>){
-        setPassword(event.target.value)
-    }
 
+    const {register, formState, handleSubmit, watch} = useForm<FormProps>({
+        resolver:zodResolver(newLoginSchema)
+    });
+
+    function handleLogin(data:FormProps){
+        alert("logado")
+    }
+ 
     return (
-            <FormLogin>
+            <FormLogin onSubmit={handleSubmit(handleLogin)}>
                 <LogoTCCEasier  src={logo} />
                 <ContainerInputs>
                     <input 
                         className="form-control"
                         type="email"
-                        placeholder="E-mail"           
+                        placeholder="E-mail"
+                        {...register("email")}           
                     />
+                   <MessageEmailError>{formState.errors.email?.message}</MessageEmailError>
                     <input 
-                        required
                         className="form-control"
                         type="password"
                         placeholder="Senha"
+                        
+                        {...register("password")}   
                     />
+                    <MessageEmailError>{formState.errors.password?.message}</MessageEmailError>
                 </ContainerInputs>
                 
                 <ButtonEnter
                     type="submit"
                     className="btn btn-success"
-                    onClick={handleClickSignIn}
                 >
                     Entrar
                 </ButtonEnter>
                 <InforText>Não possui uma conta?
-                    <RedirectForSignUp onClick={handleClickRegister}> Cadastre-se.</RedirectForSignUp>
+                    <RedirectForSignUp > Cadastre-se.</RedirectForSignUp>
                 </InforText>
-            
-                <Modal Content={RegisterChooseModal} isOpen={openModal} setModalOpen={()=>{setOpenModal(!openModal)}}/>
             </FormLogin>
             
     )

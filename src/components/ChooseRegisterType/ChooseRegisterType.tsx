@@ -1,7 +1,7 @@
 
 import style from './ChooseRegisterType.module.css'
-import professorIcon from '/images/professor.png'
-import alunoIcon from '/images/aluna.png'
+import professorIcon from '../../../public/images/professor.png'
+import alunoIcon from '../../../public/images/aluna.png'
 import { useState } from 'react';
 import { Modal } from '../Modal/Modal';
 import { StudentRegisterForm } from '../StudentRegisterForm/StudentRegisterForm';

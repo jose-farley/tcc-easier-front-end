@@ -4,28 +4,30 @@ import styled from "styled-components";
 export const FormLogin = styled.form`
     display: flex;
     flex-direction: column;
-    margin-top: 0rem;
+    margin-top: 1rem;
+    min-width: 15rem;
+    gap: 0.5rem;
+   
     
 `
 export const LogoTCCEasier = styled.img`
-    width: 14rem;
-    height: 14rem;
+    width: 10rem;
+    height: 2rem;
     margin-left: auto;
     margin-right: auto;
-    background-color: aqua;
-    margin-bottom: 1rem;
-    margin-top: 4rem;
+    margin-bottom: 2rem;
+    margin-top: 10rem;
 `
 export const ContainerInputs = styled.div`
     display: flex;
     flex-direction: column;
-    margin-top: -4rem;
+    gap:0.5rem;
     input {
         margin-top: 0rem;
-        width: 20vw;
+        width: 100%;
     }
     input+input{
-        margin-top: 1rem;
+        margin-top: 2rem;
     }
 `
 export const ButtonEnter = styled.button`
@@ -35,6 +37,7 @@ export const ButtonEnter = styled.button`
     &:hover {
         background-color: ${props => props.theme["green-700"]};
     }
+   
 `
 export const InforText = styled.span`
     margin-top: 1rem;
@@ -50,4 +53,13 @@ export const RedirectForSignUp = styled.span`
     &:hover{
         text-decoration: underline;
     }
+`
+
+export const MessageEmailError= styled.span`
+    display: flex;
+    width: 80%;
+    font-size: 0.75rem;
+    color: ${props => props.theme["red-500"]};
+    opacity: 0.6;
+    font-weight: bold;
 `
