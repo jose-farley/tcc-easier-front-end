@@ -1,28 +1,45 @@
-import style from './StudentRegisterForm.module.css'
+import { ContainerStudentForm, RowForm, StudentForm } from "./style";
+import { Envelope, User, Key, LockKey, Student} from '@phosphor-icons/react'
+
 
 export function StudentRegisterForm(){
     return (
-        <div className={style.container}>
-            <strong>Cadastro aluno</strong>
-            <form action="" className={style.form}>
-                <div className={style.col}>
-                    <input className="form-control" type="text" placeholder="Nome" aria-label="default input example"/>
-                    <input className="form-control" type="email" placeholder="E-mail" aria-label="default input example"/>
-                </div>
-                <div  className={style.row}> 
-                    <input className="form-control" type="password" placeholder="Senha" aria-label="default input example"/>
-                    <input className="form-control" type="password" placeholder="Confirmar senha" aria-label="default input example"/>
-                </div>
-                <div className={style.col}>
-                    <input className="form-control" type="email" placeholder="Matricula" aria-label="default input example"/>
-                    <select className="form-select" aria-label="Default select example">
-                        <option selected aria-required >Curso</option>
-                        <option value="1">Análise e Desenvolvimento de Sistemas</option>
-                    </select>
-                </div>
-               
-                <button type="button" className={`btn btn-success ${style.btnStudentRegister}`}>Cadastrar </button>
-            </form>
-        </div>
-    )
+       <ContainerStudentForm>
+            <StudentForm>
+                <RowForm>
+                    <label htmlFor=""><User size={30}/></label>
+                    <input className="form-control" type="text" placeholder="Nome"/>
+                </RowForm>
+                <RowForm>
+                    <label htmlFor=""><Student size={30}/></label>
+                    <input className="form-control" type="text" placeholder="Matrícula"/>
+                </RowForm>
+                <RowForm>
+                    <label htmlFor=""><Envelope size={28}/></label>
+                    <input className="form-control" type="email" placeholder="E-mail"/>
+                </RowForm>
+                <RowForm>
+                    <label htmlFor=""><Key size={24}/></label>
+                    <input className="form-control" type="password" placeholder="Senha"/>
+                </RowForm>
+                <RowForm>
+                    <label htmlFor=""><LockKey size={28}/></label>
+                    <input className="form-control" type="password" placeholder="Confirmar senha"/>
+                </RowForm>
+                <RowForm>
+                <label htmlFor=""><Student size={28}/></label>
+                <select className="form-select">
+                    <option selected>Análise e Desenvolvimento de Sistemas</option>
+                    <option value="1" disabled>Engenharia de Controle e Automação</option>
+                    <option value="2" disabled>Engenharia Civil</option>
+                    <option value="3" disabled>Eletromecânica</option>
+                    <option value="3" disabled>Matemática</option>
+                </select>
+                </RowForm>
+
+                <button>Cadastrar</button>
+ 
+            </StudentForm>
+       </ContainerStudentForm>
+    )   
 }

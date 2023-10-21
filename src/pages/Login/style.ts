@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import image from '../../images/ifpbFrente.jpeg'
 
 
 export const LoginContainer = styled.div`
@@ -15,7 +15,7 @@ export const LeftContent = styled.div`
     z-index: 1;
     display: flex;
     flex-grow: 1.4;
-    background-image: url('./images/ifpbFrente.jpeg');
+    background-image: url(${image});
     background-repeat: no-repeat;
     background-size: cover;
     justify-content: center;

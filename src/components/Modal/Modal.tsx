@@ -1,31 +1,28 @@
-import style from './Modal.module.css'
-import { BsX } from "react-icons/bs";
+import {X} from '@phosphor-icons/react'
+import { ContainerModal, ContainerModalButtons, ModalContent } from './style'
+
 
 
 interface props {
-    isOpen:boolean
-    setModalOpen:any
-    Content:any
-    isLarge?:Boolean
+    content:any
+    size?:'default' | 'large'
+    setModalIsOpen(value:boolean):void
 }
-
-export function Modal({isOpen, setModalOpen, Content, isLarge=false}:props){
-    function handleClick(){
-        setModalOpen(false)
-    }
-    if(isOpen){
-        return (
-            <div className={style.container}>
-                
-                <div className={ (isLarge)? style.largeModal:style.modalContent}>
-                    <div className={style.btnClose}>
-                        <BsX onClick={handleClick} size={35}/>
-                    </div>
-                    <Content/>
-                </div>
-            </div>
-        )
-    }else {
-        return null
-    }
+export function Modal({setModalIsOpen, size='default', content}:props){
+    return(
+        <ContainerModal>
+            <ModalContent size={size}>
+                <ContainerModalButtons>
+                    
+                    <button 
+                        onClick={()=>{setModalIsOpen(false)}}
+                    >
+                        <X size={28}/>
+                    </button>
+                </ContainerModalButtons>
+                {content}
+            </ModalContent>
+        </ContainerModal>
+     
+    )
 }
