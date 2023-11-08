@@ -32,35 +32,39 @@ export function LoginForm() {
     }
  
     return (
-        <FormLogin onSubmit={handleSubmit(handleLogin)}>
-            <LogoTCCEasier  src={logo} />
-            <ContainerInputs>
-                <input 
-                    className="form-control"
-                    type="email"
-                    placeholder="E-mail"
-                    {...register("email")}           
-                />
-                <MessageEmailError>{formState.errors.email?.message}</MessageEmailError>
-                <input 
-                    className="form-control"
-                    type="password"
-                    placeholder="Senha"
-                    
-                    {...register("password")}   
-                />
-                <MessageEmailError>{formState.errors.password?.message}</MessageEmailError>
-            </ContainerInputs>
+
+        <>
+            <FormLogin onSubmit={handleSubmit(handleLogin)}>
+                <LogoTCCEasier  src={logo} />
+                <ContainerInputs>
+                    <input 
+                        className="form-control"
+                        type="email"
+                        placeholder="E-mail"
+                        {...register("email")}           
+                    />
+                    <MessageEmailError>{formState.errors.email?.message}</MessageEmailError>
+                    <input 
+                        className="form-control"
+                        type="password"
+                        placeholder="Senha"
+                        
+                        {...register("password")}   
+                    />
+                    <MessageEmailError>{formState.errors.password?.message}</MessageEmailError>
+                </ContainerInputs>
+                
+                <ButtonEnter
+                    type="submit"
+                    className="btn btn-success"
+                >
+                    Entrar
+                </ButtonEnter>
+                <InforText>Não possui uma conta?
+                    <RedirectForSignUp onClick={openModal}> Cadastre-se.</RedirectForSignUp>
+                </InforText>
             
-            <ButtonEnter
-                type="submit"
-                className="btn btn-success"
-            >
-                Entrar
-            </ButtonEnter>
-            <InforText>Não possui uma conta?
-                <RedirectForSignUp onClick={openModal}> Cadastre-se.</RedirectForSignUp>
-            </InforText>
+            </FormLogin>
             {
                 (modalIsOpen)?
                 <Modal
@@ -69,9 +73,10 @@ export function LoginForm() {
                     setModalIsOpen={setModalIsOpen}
                 />
                 :null
-            }
-        </FormLogin>
-            
+            } 
+        </>
+
+        
             
             
     )

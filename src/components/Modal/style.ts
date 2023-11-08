@@ -22,7 +22,7 @@ export const ModalContent = styled.div<ModalProps>`
     margin-left: auto;
     margin-right: auto;
     margin-top:${props => (props.size=='default')?'8rem':'4rem'};
-    height: ${props => (props.size=='default')?'20rem':'30rem' };
+    height: ${props => (props.size=='default')?'20rem':'32rem' };
     width: 40rem;
     background-color: white;
     box-shadow: 1px 0.4px 10px black;
