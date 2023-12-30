@@ -15,6 +15,7 @@ export const ContainerRegisterTypes = styled.div`
         @media (max-width:425px){
             margin-bottom: 0.8rem;
             margin-top: 0.4rem;
+            
           
         }
     }
@@ -23,6 +24,7 @@ export const ContainerRegisterTypes = styled.div`
        width: 18rem;
        margin-left: auto;
        margin-right: auto;
+       width: 12rem;
       
    }
 `

@@ -5,6 +5,16 @@ export const ContainerStudent = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 0rem;
+ 
+    @media (max-width:425px){
+            justify-content: center;
+            margin-top: 0.5rem;
+            width: 15rem;
+            height: 25rem;
+            overflow-y: auto;
+            padding-top: 12rem;
+            background-color: azure;
+    }
 `
 export const ErrorMessage = styled.span`
     font-size: 0.8rem;
@@ -31,7 +41,10 @@ export const StudentForm = styled.form`
         width: 22rem;
         height: 3rem;
         border-radius: 8px;
-       
+        @media (max-width:425px){
+            width: 10rem;
+            height: 3rem;
+        }
 
         &:hover {
             background-color: ${props => props.theme["green-700"]};
@@ -48,10 +61,16 @@ export const RowForm = styled.div`
     margin-bottom: 1rem;
     input {
         width: 20rem;
+        @media (max-width:425px){
+            width: 12rem;
+        }
     }
     select {
         width: 20rem;
         font-size: 1rem;
         color: ${props => props.theme["gray-600"]};
+        @media (max-width:425px){
+            width: 12rem;
+        }
     }
 `

@@ -28,7 +28,9 @@ export const ModalContent = styled.div<ModalProps>`
     z-index: 80;
     padding: 1rem;
     @media (max-width:425px){
-       
+        justify-content: center;
+        padding: 2rem;
+        height: ${props => (props.size=='default')?'20rem':'25rem' };
         width: 18rem;
         margin-left: auto;
         margin-right: auto;
@@ -45,6 +47,7 @@ export const ContainerModalButtons = styled.div`
     button {
         border: none;
         background-color: white;
+      
     }
     @media (max-width:425px){
         justify-content: flex-end;
