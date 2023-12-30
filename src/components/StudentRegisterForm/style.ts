@@ -31,7 +31,7 @@ export const StudentForm = styled.form`
         width: 22rem;
         height: 3rem;
         border-radius: 8px;
-        margin-top: 1rem;
+       
 
         &:hover {
             background-color: ${props => props.theme["green-700"]};

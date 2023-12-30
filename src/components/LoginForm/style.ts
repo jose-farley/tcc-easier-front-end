@@ -7,7 +7,12 @@ export const FormLogin = styled.form`
     margin-top: 1rem;
     min-width: 15rem;
     gap: 0.5rem;
-   
+
+    @media (max-width:425px){
+        margin-top: -4rem;
+        min-width: 100vw;
+    }
+    
     
 `
 export const LogoTCCEasier = styled.img`
@@ -17,6 +22,13 @@ export const LogoTCCEasier = styled.img`
     margin-right: auto;
     margin-bottom: 2rem;
     margin-top: 10rem;
+
+    @media (max-width:425px){
+        margin-left: auto;
+        margin-right: auto;
+        width: 10rem;
+        height: 2rem;
+    }
 `
 export const ContainerInputs = styled.div`
     display: flex;
@@ -25,6 +37,11 @@ export const ContainerInputs = styled.div`
     input {
         margin-top: 0rem;
         width: 100%;
+        @media (max-width:425px){
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
     input+input{
         margin-top: 2rem;
@@ -36,6 +53,13 @@ export const ButtonEnter = styled.button`
 
     &:hover {
         background-color: ${props => props.theme["green-700"]};
+    }
+
+    @media (max-width:425px){
+
+       width: 15rem;
+       margin-left: auto;
+       margin-right: auto;
     }
    
 `
@@ -62,4 +86,9 @@ export const MessageEmailError= styled.span`
     color: ${props => props.theme["red-500"]};
     opacity: 0.6;
     font-weight: bold;
+
+    @media (max-width:425px){
+      margin-left: auto;
+      margin-right: auto;
+    }
 `
