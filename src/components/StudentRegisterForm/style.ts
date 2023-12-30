@@ -13,7 +13,7 @@ export const ContainerStudent = styled.div`
             height: 25rem;
             overflow-y: auto;
             padding-top: 12rem;
-            background-color: azure;
+        
     }
 `
 export const ErrorMessage = styled.span`
@@ -59,6 +59,12 @@ export const RowForm = styled.div`
     align-items: center;
     gap: 1rem;
     margin-bottom: 1rem;
+
+    label {
+        @media (max-width:425px){
+            display: none;
+        }
+    }
     input {
         width: 20rem;
         @media (max-width:425px){
