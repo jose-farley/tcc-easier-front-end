@@ -20,14 +20,14 @@ type FormProps = zod.infer<typeof newLoginSchema>
 export function LoginForm() {
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
-    const {register, formState, handleSubmit, watch} = useForm<FormProps>({
+    const {register, formState, handleSubmit} = useForm<FormProps>({
         resolver:zodResolver(newLoginSchema)
     });
 
     function openModal(){
         setModalIsOpen(true);
     }
-    function handleLogin(data:FormProps){
+    function handleLogin(){
         alert("logado")
     }
  

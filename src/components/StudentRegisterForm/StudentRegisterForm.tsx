@@ -7,7 +7,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 
 
-const phoneNumberRegex = new RegExp(/^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/)
 const newRegisterStudentSchema = zod.object({
     email: zod.string().min(1, "Você precisa informar um E-mail.")
     .email("E-mail inválido"),
@@ -26,13 +25,11 @@ type FormProps = zod.infer<typeof newRegisterStudentSchema>
 
 export function StudentRegisterForm(){
 
-    const {register, handleSubmit, formState, watch} = useForm<FormProps>({
+    const {register, handleSubmit, formState} = useForm<FormProps>({
         resolver:zodResolver(newRegisterStudentSchema)
     })
 
-    function applyMaskPhone(){
-
-    }
+  
 
     async function handleCreateStudent(data:FormProps){
       console.log(data)

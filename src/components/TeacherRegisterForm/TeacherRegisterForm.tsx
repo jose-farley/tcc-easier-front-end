@@ -1,5 +1,5 @@
 
-import { Envelope, User, Key, LockKey, Student, UserFocus} from '@phosphor-icons/react'
+import { Envelope, User, Key, LockKey, UserFocus} from '@phosphor-icons/react'
 import { ContainerTeacherForm, RowForm, TeacherForm } from './style'
 
 
