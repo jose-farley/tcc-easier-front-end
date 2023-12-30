@@ -14,9 +14,7 @@ export const ContainerModal = styled.div`
 interface ModalProps {
     size: 'default' | 'large'
 }
-export const ModalContent = styled.div<ModalProps>`
-
-    
+export const ModalContent = styled.div<ModalProps>`  
     flex-direction: column;
     display: flex;
     margin-left: auto;
@@ -29,6 +27,12 @@ export const ModalContent = styled.div<ModalProps>`
     border-radius: 8px;
     z-index: 80;
     padding: 1rem;
+    @media (max-width:425px){
+       
+        width: 18rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
 `
 export const ContainerModalButtons = styled.div`
     display: flex;
@@ -36,11 +40,13 @@ export const ContainerModalButtons = styled.div`
     justify-content: flex-end;
     align-items: center;
     span {
-        
         color: ${props => props.theme["gray-700"]};
     }
     button {
         border: none;
         background-color: white;
     }
+    @media (max-width:425px){
+        justify-content: flex-end;
+   }
 `
