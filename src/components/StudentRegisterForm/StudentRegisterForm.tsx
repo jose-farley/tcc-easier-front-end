@@ -1,11 +1,11 @@
-import { useForm, Controller  } from "react-hook-form";
+import { useForm  } from "react-hook-form";
 import { ContainerStudent, ErrorMessage, RowForm, StudentForm } from "./style";
 import { Phone,Envelope, User, Key, LockKey, Student} from '@phosphor-icons/react'
 
 import InputMask from 'react-input-mask';
 import * as zod from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod";
-import { api } from "../../api";
+
 import axios from "axios";
 
 
@@ -28,7 +28,7 @@ type FormProps = zod.infer<typeof newRegisterStudentSchema>
 
 export function StudentRegisterForm(){
 
-    const {register, control, handleSubmit, formState} = useForm<FormProps>({
+    const {register, handleSubmit, formState} = useForm<FormProps>({
         resolver:zodResolver(newRegisterStudentSchema)
     })
 
