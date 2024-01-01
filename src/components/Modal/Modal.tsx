@@ -12,7 +12,7 @@ export function Modal({setModalIsOpen, size='default', content}:props){
     return(
         <ContainerModal>
             <ModalContent size={size}>
-                <ContainerModalButtons>
+                <ContainerModalButtons size={size}>
                     
                     <button 
                         onClick={()=>{setModalIsOpen(false)}}

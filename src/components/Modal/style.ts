@@ -29,18 +29,18 @@ export const ModalContent = styled.div<ModalProps>`
     padding: 1rem;
     @media (max-width:425px){
         justify-content: center;
-        padding: 2rem;
-        height: ${props => (props.size=='default')?'20rem':'35rem' };
-        width: 18rem;
+        margin-top:${props => (props.size=='default')?'8rem':'0.75rem'};
+        height: ${props => (props.size=='default')?'20rem':'38rem' };
+        width: 20rem;
         margin-left: auto;
         margin-right: auto;
     }
 `
-export const ContainerModalButtons = styled.div`
+export const ContainerModalButtons = styled.div<ModalProps>`
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    align-items: center;
+
     span {
         color: ${props => props.theme["gray-700"]};
     }
@@ -50,6 +50,7 @@ export const ContainerModalButtons = styled.div`
       
     }
     @media (max-width:425px){
+        margin-top: ${props => (props.size=='default')?'1rem':'-8rem' };
         justify-content: flex-end;
    }
 `

@@ -5,13 +5,13 @@ export const ContainerStudent = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 0rem;
- 
+    margin-left: auto;
+    margin-right: auto;
     @media (max-width:425px){
             justify-content: center;
             margin-top: 0.5rem;
             width: 15rem;
-            height: 25rem;
-            overflow-y: auto;
+            height: 25rem;    
             padding-top: 5rem;
         
     }
@@ -59,7 +59,9 @@ export const RowForm = styled.div`
     align-items: center;
     gap: 1rem;
     margin-bottom: 1rem;
-
+  
+    margin-left: auto;
+    margin-right: auto;
     label {
         @media (max-width:425px){
             display: none;
@@ -68,7 +70,7 @@ export const RowForm = styled.div`
     input {
         width: 20rem;
         @media (max-width:425px){
-            width: 12rem;
+            width: 15rem;
         }
     }
     select {
