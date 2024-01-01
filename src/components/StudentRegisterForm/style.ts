@@ -12,7 +12,7 @@ export const ContainerStudent = styled.div`
             width: 15rem;
             height: 25rem;
             overflow-y: auto;
-            padding-top: 12rem;
+            padding-top: 5rem;
         
     }
 `

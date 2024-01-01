@@ -30,7 +30,7 @@ export const ModalContent = styled.div<ModalProps>`
     @media (max-width:425px){
         justify-content: center;
         padding: 2rem;
-        height: ${props => (props.size=='default')?'20rem':'25rem' };
+        height: ${props => (props.size=='default')?'20rem':'35rem' };
         width: 18rem;
         margin-left: auto;
         margin-right: auto;
