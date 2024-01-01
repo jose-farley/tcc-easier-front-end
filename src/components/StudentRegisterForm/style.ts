@@ -7,7 +7,7 @@ export const ContainerStudent = styled.div`
     margin-top: 0rem;
     margin-left: auto;
     margin-right: auto;
-    @media (max-width:425px){
+    @media (max-width:940px){
             justify-content: center;
             margin-top: 2.5rem;
             width: 15rem;
@@ -33,7 +33,6 @@ export const StudentForm = styled.form`
     text-align: left;
     height: 28rem;
     
-
     button {
         background-color: ${props => props.theme["green-500"]};
         color: white;
@@ -41,7 +40,7 @@ export const StudentForm = styled.form`
         width: 22rem;
         height: 3rem;
         border-radius: 8px;
-        @media (max-width:425px){
+        @media (max-width:940px){
             width: 10rem;
             height: 3rem;
         }
@@ -63,13 +62,13 @@ export const RowForm = styled.div`
     margin-left: auto;
     margin-right: auto;
     label {
-        @media (max-width:425px){
+        @media (max-width:940px){
             display: none;
         }
     }
     input {
         width: 20rem;
-        @media (max-width:425px){
+        @media (max-width:940px){
             width: 15rem;
         }
     }
@@ -77,7 +76,7 @@ export const RowForm = styled.div`
         width: 20rem;
         font-size: 1rem;
         color: ${props => props.theme["gray-600"]};
-        @media (max-width:425px){
+        @media (max-width:940px){
             width: 15rem;
         }
     }

@@ -19,7 +19,7 @@ export const ModalContent = styled.div<ModalProps>`
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    margin-top:${props => (props.size=='default')?'8rem':'0.75rem'};
+    margin-top:${props => (props.size=='default')?'8rem':'1.75rem'};
     height: ${props => (props.size=='default')?'20rem':'33rem' };
     width: 40rem;
     background-color: white;
@@ -27,7 +27,7 @@ export const ModalContent = styled.div<ModalProps>`
     border-radius: 8px;
     z-index: 80;
     padding: 1rem;
-    @media (max-width:425px){
+    @media (max-width:940px){
         justify-content: center;
         margin-top:${props => (props.size=='default')?'8rem':'0.75rem'};
         height: ${props => (props.size=='default')?'20rem':'38rem' };
@@ -49,7 +49,7 @@ export const ContainerModalButtons = styled.div<ModalProps>`
         background-color: white;
       
     }
-    @media (max-width:425px){
+    @media (max-width:940px){
         margin-top: ${props => (props.size=='default')?'0rem':'-5rem' };
         justify-content: flex-end;
    }

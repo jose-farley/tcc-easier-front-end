@@ -5,10 +5,10 @@ export const FormLogin = styled.form`
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
-    min-width: 15rem;
+    min-width: 20rem;
     gap: 0.5rem;
 
-    @media (max-width:425px){
+    @media (max-width:940px){
         margin-top: -4rem;
         min-width: 100vw;
     }
@@ -23,7 +23,7 @@ export const LogoTCCEasier = styled.img`
     margin-bottom: 2rem;
     margin-top: 10rem;
 
-    @media (max-width:425px){
+    @media (max-width:940px){
         margin-left: auto;
         margin-right: auto;
         width: 10rem;
@@ -37,7 +37,7 @@ export const ContainerInputs = styled.div`
     input {
         margin-top: 0rem;
         width: 100%;
-        @media (max-width:425px){
+        @media (max-width:940px){
             width: 80%;
             margin-left: auto;
             margin-right: auto;
@@ -55,7 +55,7 @@ export const ButtonEnter = styled.button`
         background-color: ${props => props.theme["green-700"]};
     }
 
-    @media (max-width:425px){
+    @media (max-width:940px){
 
        width: 15rem;
        margin-left: auto;
@@ -87,7 +87,7 @@ export const MessageEmailError= styled.span`
     opacity: 0.6;
     font-weight: bold;
 
-    @media (max-width:425px){
+    @media (max-width:940px){
       margin-left: auto;
       margin-right: auto;
     }

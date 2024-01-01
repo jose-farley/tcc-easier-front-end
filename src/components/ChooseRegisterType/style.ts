@@ -12,14 +12,14 @@ export const ContainerRegisterTypes = styled.div`
     h1{
         margin-bottom: 2rem;
         font-size: 1rem;
-        @media (max-width:425px){
+        @media (max-width:940px){
             margin-bottom: 0.8rem;
             margin-top: 0.4rem;
             
           
         }
     }
-    @media (max-width:425px){
+    @media (max-width:940px){
        margin-top: 0.4rem;
        width: 18rem;
        margin-left: auto;
@@ -34,7 +34,7 @@ export const ContainerOptions = styled.div`
     gap: 1rem;
     justify-content: center;
     align-items: center;
-    @media (max-width:425px){
+    @media (max-width:940px){
         flex-direction: column;
         gap: 0.4rem;
    }
@@ -54,7 +54,7 @@ export const ContainerOptions = styled.div`
         height: 10rem;
         background-color: ${props => props.theme["green-500"]};
         transition: 0.4s;
-        @media (max-width:425px){
+        @media (max-width:940px){
             width: 10rem;
             height: 6rem;
             font-size: 0.8rem;
@@ -67,7 +67,7 @@ export const ContainerOptions = styled.div`
         display: flex;
         width: 5rem;
         height: 5rem;
-        @media (max-width:425px){
+        @media (max-width:940px){
             width: 2rem;
             height: 2rem;
         }
