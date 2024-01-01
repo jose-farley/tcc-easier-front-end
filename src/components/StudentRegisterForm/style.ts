@@ -9,7 +9,7 @@ export const ContainerStudent = styled.div`
     margin-right: auto;
     @media (max-width:425px){
             justify-content: center;
-            margin-top: 0.5rem;
+            margin-top: 2.5rem;
             width: 15rem;
             height: 25rem;    
             padding-top: 5rem;

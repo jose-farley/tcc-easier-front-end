@@ -50,7 +50,7 @@ export const ContainerModalButtons = styled.div<ModalProps>`
       
     }
     @media (max-width:425px){
-        margin-top: ${props => (props.size=='default')?'1rem':'-8rem' };
+        margin-top: ${props => (props.size=='default')?'0rem':'-5rem' };
         justify-content: flex-end;
    }
 `
