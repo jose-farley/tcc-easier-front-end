@@ -78,7 +78,7 @@ export const RowForm = styled.div`
         font-size: 1rem;
         color: ${props => props.theme["gray-600"]};
         @media (max-width:425px){
-            width: 12rem;
+            width: 15rem;
         }
     }
 `
