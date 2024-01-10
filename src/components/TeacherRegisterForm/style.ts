@@ -11,9 +11,16 @@ export const TeacherForm = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    label {
+        @media (max-width:940px){
+            display: none;
+        }
+    }
     textarea {
         width: 20rem;
+        @media (max-width:940px){
+            width: 15rem;
+        }
     }
 
     button {
@@ -28,6 +35,10 @@ export const TeacherForm = styled.form`
         &:hover {
             background-color: ${props => props.theme["green-700"]};
         }
+        @media (max-width:940px){
+            width: 10rem;
+            height: 3rem;
+        }
     }
     
 `
@@ -40,6 +51,9 @@ export const RowForm = styled.div`
     margin-bottom: 1rem;
     input {
         width: 20rem;
+        @media (max-width:940px){
+            width: 15rem;
+        }
     }
     select {
         width: 20rem;

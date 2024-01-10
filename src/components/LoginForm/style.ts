@@ -38,7 +38,7 @@ export const ContainerInputs = styled.div`
         margin-top: 0rem;
         width: 100%;
         @media (max-width:940px){
-            width: 80%;
+            width: 20rem;
             margin-left: auto;
             margin-right: auto;
         }
