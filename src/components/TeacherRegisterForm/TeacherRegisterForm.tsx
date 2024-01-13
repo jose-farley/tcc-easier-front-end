@@ -6,6 +6,7 @@ import * as zod from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm  } from "react-hook-form";
 import { ErrorMessage } from '../StudentRegisterForm/style';
+import axios from 'axios';
 
 const newRegisterTeacherSchema = zod.object({
     email: zod.string().min(1, "Você precisa informar um E-mail.")
@@ -25,8 +26,16 @@ export function TeacherRegisterForm(){
         resolver:zodResolver(newRegisterTeacherSchema)
     })
 
-    function handleCreateTeacher(data:FormProps){
-        console.log(data)
+    async function handleCreateTeacher(data:FormProps){
+        try {
+            let result = await axios.post('https://tcc-easier-backend.onrender.com/professor',
+                data
+            )
+            if(result.data.has_error) return alert("Houve um problema ao efetuar o cadastro.")
+            window.location.reload();
+        } catch (error) {
+            return alert("Houve um problema ao efetuar o cadastro.")
+        }
     }
 
     return (
