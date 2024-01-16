@@ -4,9 +4,11 @@ import { ButtonEnter, ContainerInputs, FormLogin, InforText, LogoTCCEasier, Mess
 import { useForm } from 'react-hook-form';
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Modal } from '../Modal/Modal';
 import ChooseRegisterType from '../ChooseRegisterType/ChooseRegisterType';
+import { AuthContext } from '../../context/authentication';
+import { useNavigate } from 'react-router-dom';
 
 
 const newLoginSchema = zod.object({
@@ -18,7 +20,8 @@ const newLoginSchema = zod.object({
 type FormProps = zod.infer<typeof newLoginSchema>
 
 export function LoginForm() {
-
+    const {logar} = useContext(AuthContext)
+    const navigate = useNavigate()
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const {register, formState, handleSubmit} = useForm<FormProps>({
         resolver:zodResolver(newLoginSchema)
@@ -27,8 +30,8 @@ export function LoginForm() {
     function openModal(){
         setModalIsOpen(true);
     }
-    function handleLogin(){
-        alert("logado")
+    function handleLogin(data:FormProps){
+        logar(data)
     }
  
     return (

@@ -35,7 +35,7 @@ export function StudentRegisterForm(){
     async function handleCreateStudent(data:FormProps){
     
         try {
-            let result = await axios.post('https://tcc-easier-backend.onrender.com/aluno',
+            let result = await axios.post('http://localhost:8080/aluno',
                 data
             )
             if(result.data.has_error) return alert("Houve um problema ao efetuar o cadastro.")
