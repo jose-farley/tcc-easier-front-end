@@ -5,7 +5,7 @@ export const ContainerRegisterTypes = styled.div`
     display: flex;
     flex-direction: column;
     width: 30rem;
-    height: 20rem;
+    height: 15rem;
     margin-left: auto;
     margin-right: auto;
     text-align: center;

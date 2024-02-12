@@ -41,6 +41,7 @@ export function AuthFornecedor({children}:Props){
       localStorage.setItem('auth.token', data.data.token);
       localStorage.setItem('user.email', data.data.email);
       localStorage.setItem('user.role', data.data.role);
+      localStorage.setItem('user.id', data.data.id);
       setEmail(props.email)
       setRole(data.data.role)
       if(data.data.role == 'student'){

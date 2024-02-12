@@ -2,6 +2,6 @@ import axios from 'axios'
 
 
 const api = axios.create({
-    baseURL:"https://tcc-easier-backend.onrender.com/"
+    baseURL:"http://localhost:8080/"
 })
 export {api}

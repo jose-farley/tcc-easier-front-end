@@ -9,6 +9,7 @@ export const ProfessorMenuContainer = styled.div`
     align-items: center;
     background-color: ${props => props.theme["green-500"]};
     width: 18rem;
+   
 
 `
 export const MenuProfessor = styled.nav`

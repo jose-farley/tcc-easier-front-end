@@ -28,7 +28,7 @@ export function TeacherRegisterForm(){
 
     async function handleCreateTeacher(data:FormProps){
         try {
-            let result = await axios.post('https://tcc-easier-backend.onrender.com/professor',
+            let result = await axios.post('http://localhost:8080/professor',
                 data
             )
             if(result.data.has_error) return alert("Houve um problema ao efetuar o cadastro.")

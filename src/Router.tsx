@@ -9,6 +9,8 @@ import { HomePage } from "./pages/student/Home";
 import { useContext } from "react";
 import { AuthContext } from "./context/authentication";
 import { LayoutProfessor } from "./layouts/professor";
+import { StudentListPage } from "./pages/professor/StudentList";
+import { HomeAdvisor } from "./pages/professor/Home";
 
 export function Router(){
     const {role} = useContext(AuthContext)
@@ -18,26 +20,35 @@ export function Router(){
 
         <Routes>
             {
-                (role.length <= 0)?
+                //role.length <= 0
+                (false )?
                 <>
                     <Route path='/' element={<LoginScreen/>} />
                 </>:
                 <>
                 (role == 'student')?
+                <>
+                    <Route path='/' element={<LoginScreen/>} />
                     <Route path="/aluno" element={ <LayoutAluno />}>
                         <Route path="/aluno" element={<HomePage />} />
                         <Route path="/aluno/orientadores" element={<AdvisorsPage />} />
                         <Route path="/aluno/configuracoes"element={<SettingsPage />} />
                         <Route path="/aluno/tarefas" element={<TasksPage />} />
                         <Route path="/aluno/reunioes" element={<MeetingsPage />}/>
-                    </Route>:
-                    <Route path="/professor" element={ <LayoutProfessor />}>
-                        <Route path="/professor" element={<HomePage />} />
-                        <Route path="/professor/orientadores" element={<AdvisorsPage />} />
-                        <Route path="/professor/configuracoes"element={<SettingsPage />} />
-                        <Route path="/professor/tarefas" element={<TasksPage />} />
-                        <Route path="/professor /reunioes" element={<MeetingsPage />}/>
                     </Route>
+                </>
+                   :
+                   <>
+                    <Route path='/' element={<LoginScreen/>} />
+                    <Route path="/professor" element={ <LayoutProfessor />}>
+                            <Route path="/professor" element={<HomeAdvisor />} />
+                            <Route path="/professor/orientadores" element={<AdvisorsPage />} />
+                            <Route path="/professor/alunos"element={<StudentListPage />} />
+                            <Route path="/professor/tarefas" element={<TasksPage />} />
+                            <Route path="/professor /reunioes" element={<MeetingsPage />}/>
+                        </Route>
+                   </>
+                   
                 </>
                 
             }    
