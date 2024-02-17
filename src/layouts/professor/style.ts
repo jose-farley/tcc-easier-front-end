@@ -7,3 +7,11 @@ export const LayoutProfessorContainer = styled.div`
     flex-direction: row;
     height: 100vh;
 `
+export const Content = styled.div`
+    display: flex;
+    overflow-y: scroll;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+`

@@ -10,8 +10,7 @@ export const Tabela = styled.table`
     margin-left: auto;
     max-width: 80rem ;
     min-width: 20rem;
-    min-height: 10rem;
-
+  
    thead {
         display: flex;
         background-color: ${props => props.theme["green-500"]};
@@ -75,12 +74,10 @@ export const Text = styled.span`
 
 export const MainContent = styled.div`
     display: flex;
-    padding: 1rem;
     flex-direction: column;
     width: 100vw;
     justify-content: center;
     align-items: center;
     text-align: center;
-  
 
 `

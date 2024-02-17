@@ -17,53 +17,59 @@ interface Props{
     reloadFunction(data:any):void
     closeModal(data:any):void
 }
-interface Student {
+interface ProfessorInvite {
     advisorId:string
-    course:string
     createdAt:string
-    description:string
+    id:string
+    mensagem:string
+    studentName:string
+    studentId:string
+}
+
+interface Profesor {
+    createdAt:string
     email:string
     id:string
-    invites: Array<InviteFormat>
+    mentees: []
     name:string
-    phoneNumber:string
-    registration:string
-    theme:string
+    professorInvites:Array<ProfessorInvite>
  }
-export function StudentInviteList ({reloadFunction, closeModal}:Props){
-    const [studentUS, setStudent] = useState<Student>()
-    const [reloadStudentData, setReloadStudentData] = useState(false)
+export function ProfessorInviteList ({reloadFunction, closeModal}:Props){
+    const [professor, setProfessor] = useState<Profesor>()
+    const [reloadProfessorData, setReloadProfessorData] = useState(false)
+    
     async function getInvites() { 
         try {
-           let { data } = await axios.get("http://localhost:8080/aluno")
-  
-           if (data.has_error) return alert("Houve um problema ao se comunicar com os servidor")
-          
-           let user:Student = data.data.find((el:any) => {
+           let { data } = await axios.get("http://localhost:8080/professor")
+            
+            if (data.has_error) return alert("Houve um problema ao se comunicar com os servidor")
+            console.log("Professores", data)
+           let user:Profesor = data.data.find((el:any) => {
               return localStorage.getItem('user.id') == el.id;
             });
-           setStudent(user)
-         
+           setProfessor(user)
         } catch (error) {
-  
+            return alert("Houve um problema ao se comunicar com o servidor.")
         }
      }
      useEffect(()=>{
         getInvites()
-     }, [reloadStudentData])
+     }, [reloadProfessorData])
 
 
 
-    async function handleSetAdvisor(id:string){
+    async function handleSetMentee(id:string){
 
         try {
-          let {data} = await axios.post("http://localhost:8080/aluno/orientador", {data:{
-              studentId:localStorage.getItem("user.id"),
-              advisorId:id
+          let {data} = await axios.post("http://localhost:8080/professor/orientando/", {
+            menteeId: id,
+              professorId:localStorage.getItem("user.id")
            }
-           })
+           )
+           console.log("aqui", data)
            if(data.has_error) return alert("Houve um problema ao se comunicar com o servidor")
            reloadFunction((prevState: any) => !prevState)
+           setReloadProfessorData(prevState => !prevState);
            closeModal(false)
           
         } catch (error) {
@@ -71,33 +77,32 @@ export function StudentInviteList ({reloadFunction, closeModal}:Props){
         }
      }
      async function handleRejectInvite(id:string){
-        try {
-           
+        try {   
            const config = {
               data: {
                 id: id
               }
             }
-           let {data} = await axios.delete("http://localhost:8080/aluno/convite",config)
+           let {data} = await axios.delete("http://localhost:8080/professor/convidar/",config)
             console.log(data)
            if(data.has_error) return alert("Houve um problema ao se comunicar com o servidor")
            reloadFunction((prevState: any) => !prevState)
-           setReloadStudentData(prevState => !prevState);
+           setReloadProfessorData(prevState => !prevState);
         } catch (error) {
            return alert("Houve um problema ao se comunicar com o servidor")
         }
      }
-     if(studentUS){
-        if(studentUS!.invites.length > 0){
+     if(professor){
+        if(professor.professorInvites.length > 0){
             return (
                 <MainContainer>
                     {
-                        studentUS?.invites.map((el:InviteFormat) =>{
+                        professor.professorInvites.map((el:ProfessorInvite) =>{
                             return (
                             
                                     <InviteContainer>
                                         <RowContent>
-                                            <Name>{el.professorName}</Name>
+                                            <Name>{el.studentName}</Name>
                                             <span>{format(new Date(el.createdAt),'dd/MM/yyyy')}</span>
                                         </RowContent>
                                         <p>
@@ -105,7 +110,7 @@ export function StudentInviteList ({reloadFunction, closeModal}:Props){
                                         </p>
                                         <ContainerButtons>
                                             <button className="btn btn-success"
-                                                onClick={()=>{handleSetAdvisor(el.advisorId)}}
+                                                onClick={()=>{handleSetMentee(el.studentId)}}
                                             >Aceitar</button>
                                             <button className="btn btn-danger"
                                                 onClick={()=>{handleRejectInvite(el.id)}}

@@ -5,8 +5,8 @@ export const DivMsgInvites = styled.div`
     flex-direction: column;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 8rem;
     gap:1rem;
-    height: 16rem;
     width: 70%;
 
 `
@@ -16,7 +16,7 @@ export const MsgInvite = styled.span`
 `
 export const Tittle = styled.strong`
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #6F6F6F;
     margin-top: 1rem;
    
@@ -86,6 +86,8 @@ export const ButtonReject = styled.button`
 export const ContainerContent = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-left: auto;
     margin-right: auto;
     width: 100vw;
@@ -145,3 +147,38 @@ export const DivNoInvites = styled.div`
     flex-direction: column;
     text-align: center;
 ` 
+export const ContainerAdvisorInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+
+`
+export const IdentificatorTxt = styled.strong`
+    text-align: center;
+    font-size: 1.2rem;
+    color: #6F6F6F;
+    margin-top: 1rem;
+`
+export const AdvisorName = styled.strong`
+  color: ${props => {return props.theme["gray-500"]}};
+  font-size: 1rem;
+`
+
+export const InputShowContact = styled.input`
+    padding: 0.4rem;
+    text-align: center;
+    width: 15rem;
+
+`
+export const RowInfo = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  
+   
+
+`
