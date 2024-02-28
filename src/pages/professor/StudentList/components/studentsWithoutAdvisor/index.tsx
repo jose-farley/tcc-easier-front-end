@@ -6,6 +6,7 @@ import { ProfessorInviteList } from "../../../../../components/ProfessorInviteLi
 import { ButtonRequest, Tabela } from "../../style"
 import { InviteStudent } from "../../../../../components/InviteStudent"
 import { Title } from "../../../../../components/InviteStudent/style"
+import {Text} from './style'
 interface ResponseModel {
     name:string
     email:string
@@ -126,7 +127,8 @@ export function StudentWithoutAdvisor(){
     }else{
         return(
             <ContainerAdvisorInfo>
-                <IdentificatorTxt>Nenhum estudante encontrado.</IdentificatorTxt>
+                <Tittle>Estudantes sem orientador</Tittle>
+                <Text>(Nenhum estudante encontrado.)</Text>
             </ContainerAdvisorInfo>
             
         )

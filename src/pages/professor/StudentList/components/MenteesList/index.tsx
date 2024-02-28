@@ -4,6 +4,7 @@ import { ContainerAdvisorInfo, IdentificatorTxt, Tittle } from "../../../../stud
 import { ButtonRequest, Tabela } from "../../style"
 import { Modal } from "../../../../../components/Modal/Modal"
 import { InviteStudent } from "../../../../../components/InviteStudent"
+import { StudentDetails } from "../../../../../components/MenteeDetails"
 
 interface ResponseModel {
     name:string
@@ -92,9 +93,6 @@ export function MenteesList(){
         getAdvisor()
     }, [reloadStudentInfo])
 
-
-    console.log('dados do professor: ', userProfessor)
-
     if(userProfessor && userProfessor.mentees.length > 0){
 
         return( 
@@ -124,7 +122,7 @@ export function MenteesList(){
                                             setModalIsOpen(true);
                                         }}
                                     >
-                                        Visualizar informações
+                                        Visualizar detalhes
                                     </ButtonRequest ></td>
                                 </tr>
                             )
@@ -133,7 +131,7 @@ export function MenteesList(){
                     {
                         (modalIsOpen)?
                         <Modal
-                            content={<InviteStudent id={studentId} setModalIsOpen={setModalIsOpen}/>}
+                            content={<StudentDetails id={studentId} setModalIsOpen={setModalIsOpen}/>}
                             size='default'
                             setModalIsOpen={setModalIsOpen}
                         />

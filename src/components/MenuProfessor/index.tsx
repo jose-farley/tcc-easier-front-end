@@ -9,12 +9,12 @@ export function ProfessorMenu(){
         <ProfessorMenuContainer>
              <NavLink to="/"><LogoTCCEasierWhite  src={logo} /></NavLink> 
             <MenuProfessor>
-                <NavLink to="/professor/home"><House size={28} /> <span> Inicio</span></NavLink> 
-                <NavLink to="/aluno/orientadores"><GraduationCap size={28}/><span> Tarefas</span></NavLink>
-                <NavLink to="/professor/alunos"><UsersThree size={30}/><span>Alunos</span></NavLink>
-                <NavLink to="/aluno/tarefas"><ListChecks size={30}/><span>Reuniões</span></NavLink>
-                <NavLink to="/aluno/configuracoes"><Gear  size={28}/><span>Suporte</span></NavLink>
-                <NavLink to="/aluno/configuracoes"><Gear  size={28}/><span>Orientandos</span></NavLink>
+                <NavLink to="/professor/home"><House size={28} /> <span> fsadf</span></NavLink> 
+                <NavLink to="/professor/orientadores"><UsersThree size={30}/><span> fasdf</span></NavLink>
+                <NavLink to="/professor/alunos"><GraduationCap size={28}/><span>Alunos</span></NavLink>
+                <NavLink to="/professor/tarefas"><ListChecks size={30}/><span>Tarefas</span></NavLink>
+                <NavLink to="/professor/configuracoes"><Gear  size={28}/><span>dsaf</span></NavLink>
+                <NavLink to="/professor/configuracoes"><Gear  size={28}/><span>dsaf</span></NavLink>
             </MenuProfessor>
         </ProfessorMenuContainer>
     )

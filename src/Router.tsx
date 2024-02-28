@@ -11,6 +11,7 @@ import { AuthContext } from "./context/authentication";
 import { LayoutProfessor } from "./layouts/professor";
 import { StudentListPage } from "./pages/professor/StudentList";
 import { HomeAdvisor } from "./pages/professor/Home";
+import { ProfessorTasksPage } from "./pages/professor/Tasks";
 
 export function Router(){
     const {role} = useContext(AuthContext)
@@ -44,7 +45,7 @@ export function Router(){
                             <Route path="/professor" element={<HomeAdvisor />} />
                             <Route path="/professor/orientadores" element={<AdvisorsPage />} />
                             <Route path="/professor/alunos"element={<StudentListPage />} />
-                            <Route path="/professor/tarefas" element={<TasksPage />} />
+                            <Route path="/professor/tarefas" element={<ProfessorTasksPage />} />
                             <Route path="/professor /reunioes" element={<MeetingsPage />}/>
                         </Route>
                    </>
