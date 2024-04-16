@@ -21,6 +21,10 @@ export const ContainerAddTask = styled.div`
     margin-top: 5rem;
 `
 
+export const Subtitle = styled.strong`
+    color:#848484;
+`
+
 export const ButtonAddTask = styled.button`
    ${props => props.theme["green-700"]}
    border-radius: 100px;

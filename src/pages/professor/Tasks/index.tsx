@@ -1,12 +1,15 @@
-import { useState } from "react";
-import { ButtonAddTask, ContainerAddTask, MainContent } from "./style";
+import { useEffect, useState } from "react";
+import { ButtonAddTask, ContainerAddTask, MainContent, Subtitle } from "./style";
 import {Plus} from '@phosphor-icons/react'
 import { Modal } from "../../../components/Modal/Modal";
 import { FormAddTask } from "./Components/FormAddTask";
+import { api } from "../../../api";
+import { ActualTaskList } from "./Components/ActualTaskList";
+
+
 export function ProfessorTasksPage(){
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
-
 
     return (
        <MainContent>
@@ -19,15 +22,14 @@ export function ProfessorTasksPage(){
             {
                 (modalIsOpen)?
                 <Modal
-                    content={<FormAddTask />}
+                    content={<FormAddTask setModalIsOpen={setModalIsOpen} />}
                     size='large'
                     setModalIsOpen={setModalIsOpen}
                 />
                 :null
             }
         </ContainerAddTask>
-
-        
+            <ActualTaskList />
        </MainContent>
     )
 }

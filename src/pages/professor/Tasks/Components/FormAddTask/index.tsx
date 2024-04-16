@@ -3,8 +3,7 @@ import { BtnAddTask, ButtonSendTask, ContainerShowTasks, FormTask, MaintContaine
 import { useEffect, useState } from "react";
 import { Plus } from "@phosphor-icons/react";
 import zod from 'zod'
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { api } from "../../../../../api";
 
 interface ProfessorInvites {
     advisorId:string
@@ -39,15 +38,19 @@ interface ProfessorResponse {
  }
 
  interface Task {
-    name:string
+    taskname:string
+    groupId:string
+    status:boolean
  }
  const newAddTaskSchema = zod.object({
     menteeId: zod.string().min(1, "Você precisa selecionar um orientando."),
     DueDate:zod.string().min(1, "Você precisa informar uma data de vencimento."),
 });
 type FormProps = zod.infer<typeof newAddTaskSchema>
-
-export function FormAddTask(){
+interface prop {
+    setModalIsOpen(data:boolean):void
+}
+export function FormAddTask({setModalIsOpen}:prop){
    
     const [userProfessor, setUserProfessor] = useState<ProfessorResponse>()
     const [tasks, addTasks] = useState<Array<Task>>([])
@@ -69,7 +72,7 @@ export function FormAddTask(){
     function handleAddTask(task:string){
         if(tasks.length < 6){
             if(actualTask.length <= 0) return alert("Você precisa informar uma tarefa.")
-            addTasks([...tasks, {name:task}])
+            addTasks([...tasks, {taskname:task, status:false, groupId:localStorage.getItem('user.id')!}])
             
             setActualTask('')
         }else {
@@ -80,15 +83,25 @@ export function FormAddTask(){
         getAdvisor()
     }, [])
 
-    function handleSendTask(){
+    async function handleSendTask(){
         if(mentee.length<=0) return alert("Você precisa selecionar um orientando.")
-        verifyDate(dueData)
+        let res = verifyDate(dueData)
+        if(res == "A data fornecida é anterior à data atual.") return alert(res)
         if(tasks.length<=0) return alert("Você precisa informar pelo menos uma tarefa.")
-        console.log({
-            dueDate: dueData,
-            mentee: mentee,
-            task: [...tasks]
-        })
+        
+        try {
+            let {data} = await api.post("/professor/tarefas/adicionar", {
+                id:localStorage.getItem('user.id'),
+                dueDate:dueData,
+                mentee:mentee,
+                task: [...tasks]
+            }) 
+            setModalIsOpen(false)
+        } catch (error) {
+            alert("Houve um problema ao se comunicar com o servidor.")
+        }
+      
+        
     }
     function verifyDate(receivedDate:string) {
         if(receivedDate.length <= 0 ) return alert('Você precisa fornecer uma data de entrega para as atividades.')
@@ -99,7 +112,7 @@ export function FormAddTask(){
         const day = parseInt(parts[2]);
         const dataFornecida = new Date(year, month - 1, day); 
         if (dataFornecida < today) {
-            return alert("A data fornecida é anterior à data atual.");
+            return "A data fornecida é anterior à data atual."
         }
     }
     function handleSelectOption(value:string){
@@ -144,7 +157,7 @@ export function FormAddTask(){
                             {
                                 tasks.map(el =>{
                                     return (
-                                        <li key={el.name + new Date().toISOString()}>{el.name}</li>
+                                        <li key={el.taskname + new Date().toISOString()}>{el.taskname}</li>
                                     )
                                 })
                             }
