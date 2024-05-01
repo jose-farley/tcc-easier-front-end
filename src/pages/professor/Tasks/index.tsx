@@ -5,6 +5,7 @@ import { Modal } from "../../../components/Modal/Modal";
 import { FormAddTask } from "./Components/FormAddTask";
 import { api } from "../../../api";
 import { ActualTaskList } from "./Components/ActualTaskList";
+import { PastTasks } from "./Components/PastTasks";
 
 
 export function ProfessorTasksPage(){
@@ -30,6 +31,7 @@ export function ProfessorTasksPage(){
             }
         </ContainerAddTask>
             <ActualTaskList />
+            <PastTasks />
        </MainContent>
     )
 }

@@ -69,6 +69,7 @@ export function StudentListPage(){
             })
             setStudents(result)
         } catch (error) {
+            console.log(error)
             return alert("Houve um problema ao listar os estudantes")
         }
     }

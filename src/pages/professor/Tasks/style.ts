@@ -9,6 +9,7 @@ export const MainContent = styled.div`
     width: 100vw;
     height: 100vh;
     align-items: center;
+    gap: 2rem;
 
 `
 

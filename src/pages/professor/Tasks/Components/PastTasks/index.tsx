@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { ContainerActualTasks, Message, Subtitle, Tabela } from "./style";
-import ProgressBar from "@ramonak/react-progress-bar";
 import { api } from "../../../../../api";
+import { ContainerPastTasks, Message, Subtitle, Tabela } from "./style";
+import ProgressBar from "@ramonak/react-progress-bar";
 import { Modal } from "../../../../../components/Modal/Modal";
-import { ShowTaskList } from "./components";
+import { ShowTaskList } from "../ActualTaskList/components";
 
 interface ITask {
     groupId: string;
@@ -25,12 +25,13 @@ interface IGroupTask {
     student: IStudent;
 }
 
-
-export function ActualTaskList() {
-    const [actualTasks, setActualTasks] = useState<IGroupTask[]>([]);
+export function PastTasks() {
     const [groupTasks, setGroupTasks] = useState<IGroupTask[]>([]);
+    const [pastTasks, setPastTasks] = useState<IGroupTask[]>([]);
     const [modalInvites, setModalInvitesIsOpen] = useState(false)
     const [clickedTasks, setClickedTasks] = useState<Array<ITask>>([])
+
+    
     async function getAllTasks() {
         try {
             const { data } = await api.post("/professor/tarefas/listar", {
@@ -56,17 +57,15 @@ export function ActualTaskList() {
         }
     }
 
-    function getActualTasks() {
-        const actual = groupTasks.filter(
-            (el) => compareDate(el.dueDate) === "A data atual é anterior à data fornecida."
-        );
-        setActualTasks(actual);
-    }
-
     function porcentTask(tasks: ITask[]): number {
         const doneCount = tasks.filter((el) => el.status).length;
         const percent = (doneCount * 100) / tasks.length;
         return percent;
+    }
+
+    function getPastTasks() {
+        const past = groupTasks.filter((el) => compareDate(el.dueDate) === "A data atual é posterior à data fornecida.");
+        setPastTasks(past);
     }
 
     function converterFormatoData(data: string): string {
@@ -79,44 +78,42 @@ export function ActualTaskList() {
     }, []);
 
     useEffect(() => {
-        getActualTasks();
+        getPastTasks();
     }, [groupTasks]);
 
     return (
-        <ContainerActualTasks>
-            <Subtitle>Tarefas atuais</Subtitle>
-            {groupTasks.length > 0 ? (
-                actualTasks.length > 0 ? (
-                    <Tabela>
-                        <thead>
-                            <tr>
-                                <th>Aluno</th>
-                                <th>Progresso</th>
-                                <th>Entrega</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {actualTasks.map((el) => (
-                                <tr key={el.id}>
-                                    <td>{el.student.name}</td>
-                                    <td  onClick={()=>{
+        <ContainerPastTasks>
+            <Subtitle>Tarefas anteriores</Subtitle>
+            {pastTasks.length > 0 ? (
+                <Tabela>
+                    <thead>
+                        <tr>
+                            <th>Aluno</th>
+                            <th>Progresso</th>
+                            <th>Entrega</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {pastTasks.map((el) => (
+                            <tr key={el.id}>
+                                <td>{el.student.name}</td>
+                                <td  onClick={()=>{
                                                 setClickedTasks(el.tasks)
                                                 setModalInvitesIsOpen(true)
                                             }}>
-                                        <ProgressBar
-                                            completed={porcentTask(el.tasks)}
-                                            bgColor="#00875F"
-                                            customLabel={`${porcentTask(el.tasks)}%`}
-                                            labelColor="#8D8D99"
-                                            labelAlignment="outside"
-                                           
-                                        />
-                                    </td>
-                                    <td>{converterFormatoData(el.dueDate)}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                        {
+                                    <ProgressBar
+                                        completed={porcentTask(el.tasks)}
+                                        bgColor="#00875F"
+                                        customLabel={`${porcentTask(el.tasks)}%`}
+                                        labelColor="#8D8D99"
+                                        labelAlignment="outside"
+                                    />
+                                </td>
+                                <td>{converterFormatoData(el.dueDate)}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                    {
                             (modalInvites)?
                             <Modal
                                 content={<ShowTaskList data={clickedTasks} />}
@@ -125,11 +122,10 @@ export function ActualTaskList() {
                             />
                             :null
                         } 
-                    </Tabela>
-                ) : (
-                    <Message>Não há nenhuma tarefa atual.</Message>
-                )
-            ) : null}
-        </ContainerActualTasks>
+                </Tabela>
+            ) : (
+                <Message>Não há nenhuma tarefa anterior</Message>
+            )}
+        </ContainerPastTasks>
     );
 }

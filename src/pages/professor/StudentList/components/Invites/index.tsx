@@ -93,6 +93,7 @@ useEffect(()=>{
                             className="btn btn-success"
                             onClick={()=>{
                                 setModalInvitesIsOpen(true)
+                                
                             }}
                             > Visualizar</ButtonRequest >
                         </>

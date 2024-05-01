@@ -55,11 +55,6 @@ export const Tabela = styled.table`
    }
 `
 
-export const ContainerActualTasks = styled.div`
-    display: flex;
-    flex-direction: column;
-
-`
 export const ButtonRequest = styled.button`
     background-color: ${props => props.theme["green-500"]};
     max-height: 3rem;
@@ -89,6 +84,11 @@ export const MainContent = styled.div`
     align-items: center;
     text-align: center;
 
+`
+export const ContainerPastTasks = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
 `
 export const Subtitle = styled.strong`
     color:#848484;

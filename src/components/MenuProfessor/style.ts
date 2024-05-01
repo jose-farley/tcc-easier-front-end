@@ -8,7 +8,7 @@ export const ProfessorMenuContainer = styled.div`
     justify-content: center;
     height: 100vh;
     align-items: center;
-    background-color: ${props => props.theme["green-500"]};
+    background-color: ${props => props.theme["green-700"]};
     width: 18rem;
    
 
@@ -29,7 +29,7 @@ export const MenuProfessor = styled.nav`
         border-radius: 8px;
     }
     a:hover {
-        background-color: ${props => props.theme["green-700"]};
+        background-color: ${props => props.theme["green-500"]};
     }
     a:active{
         background-color: ${props => props.theme["green-700"]};
