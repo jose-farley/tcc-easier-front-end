@@ -13,6 +13,7 @@ import { StudentListPage } from "./pages/professor/StudentList";
 import { HomeAdvisor } from "./pages/professor/Home";
 import { ProfessorTasksPage } from "./pages/professor/Tasks";
 import { ProfessorMeetingsPage } from "./pages/professor/Meetings";
+import { ProfessorSettingPage } from "./pages/professor/Settings";
 
 export function Router(){
     const {role} = useContext(AuthContext)
@@ -48,6 +49,7 @@ export function Router(){
                             <Route path="/professor/alunos"element={<StudentListPage />} />
                             <Route path="/professor/tarefas" element={<ProfessorTasksPage />} />
                             <Route path="/professor/reunioes" element={<ProfessorMeetingsPage />}/>
+                            <Route path="/professor/configuracoes" element={<ProfessorSettingPage />}/>
                         </Route>
                    </>
                    

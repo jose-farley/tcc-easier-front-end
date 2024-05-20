@@ -34,12 +34,12 @@ interface ProfessorResponse {
 
 export function AdvisorInvites(){
     const [students, setStudents] = useState<Array<ResponseModel>>([])
-const [modalIsOpen, setModalIsOpen] = useState(false)
-const [studentId, setStudentId] = useState('')
-const [professors, setProfessor] = useState<Array<ProfessorResponse>>([])
-const [userProfessor, setUserProfessor] = useState<ProfessorResponse>()
-const [modalInvites, setModalInvitesIsOpen] = useState(false)
-const [reloadStudentInfo, setReloadStudentInfo] = useState(false)
+    const [modalIsOpen, setModalIsOpen] = useState(false)
+    const [studentId, setStudentId] = useState('')
+    const [professors, setProfessor] = useState<Array<ProfessorResponse>>([])
+    const [userProfessor, setUserProfessor] = useState<ProfessorResponse>()
+    const [modalInvites, setModalInvitesIsOpen] = useState(false)
+    const [reloadStudentInfo, setReloadStudentInfo] = useState(false)
 
 
 async function getAdvisor(){
@@ -113,5 +113,13 @@ useEffect(()=>{
                 </ContainerInvites>
             </DivMsgInvites>
         )
-    } 
+    }else {
+        return (
+            <DivMsgInvites>
+                <Tittle>Convites</Tittle>
+                <Text>Você ainda não recebeu nenhum convite de orientação.</Text>
+            </DivMsgInvites>
+        )
+      
+    }
 }

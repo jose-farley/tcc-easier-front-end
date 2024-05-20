@@ -3,6 +3,8 @@ import { ButtonAddTask, ContainerContent, ContainerMenu } from "./style";
 import { useState } from "react";
 import { Modal } from "../../../components/Modal/Modal";
 import { FormAddMeeting } from "./components/FormAddMeeting";
+import { ActualMeetingsList } from "./components/ActualMeetings";
+import { PastMeetingList } from "./components/PastMeetings";
 
 export function ProfessorMeetingsPage(){
     const [modalIsOpen, setModalIsOpen] = useState(false)
@@ -25,7 +27,8 @@ export function ProfessorMeetingsPage(){
                 :null
             }
             </ContainerMenu>
-
+            <ActualMeetingsList />
+            <PastMeetingList />
 
         </ContainerContent>
     )

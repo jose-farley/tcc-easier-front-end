@@ -1,4 +1,9 @@
 import { useEffect } from "react"
+import { MainContent } from "./style"
+import { ActualMeetingsList } from "../Meetings/components/ActualMeetings"
+import { ActualTaskList } from "../Tasks/Components/ActualTaskList"
+import { AdvisorInvites } from "../StudentList/components/Invites"
+import { MenteesList } from "../StudentList/components/MenteesList"
 
 export function HomeAdvisor(){
 
@@ -15,6 +20,12 @@ export function HomeAdvisor(){
     }, [])
 
     return (
-        <h1>Home Advisor</h1>
+        <MainContent>
+             <AdvisorInvites />
+            <ActualTaskList />
+           <ActualMeetingsList />
+           <MenteesList />
+        </MainContent>
+      
     )
 }

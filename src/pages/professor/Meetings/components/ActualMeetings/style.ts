@@ -15,7 +15,7 @@ export const Tabela = styled.table`
 
    thead {
         display: flex;
-        background-color: ${props => props.theme["yellow-500"]};
+        background-color: ${props => props.theme["green-500"]};
         color:white;
         border-radius: 8px;
         text-align: center;
@@ -49,12 +49,17 @@ export const Tabela = styled.table`
                 width: 14rem;
                 text-align: center;
                 line-height: 1.6;
-                cursor: pointer;
+                cursor: default;
             }
         }
    }
 `
 
+export const ContainerActualTasks = styled.div`
+    display: flex;
+    flex-direction: column;
+
+`
 export const ButtonRequest = styled.button`
     background-color: ${props => props.theme["green-500"]};
     max-height: 3rem;
@@ -84,11 +89,6 @@ export const MainContent = styled.div`
     align-items: center;
     text-align: center;
 
-`
-export const ContainerPastTasks = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
 `
 export const Subtitle = styled.strong`
     color:#848484;

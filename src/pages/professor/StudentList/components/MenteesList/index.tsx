@@ -5,6 +5,7 @@ import { Modal } from "../../../../../components/Modal/Modal";
 import { InviteStudent } from "../../../../../components/InviteStudent";
 import { StudentDetails } from "../../../../../components/MenteeDetails";
 import { Tittle } from "../../../../student/Advisors/style";
+import { ContainerMenteeList } from "./style";
 
 interface ResponseModel {
   name: string;
@@ -64,7 +65,7 @@ export function MenteesList() {
   };
 
   return (
-    <>
+    <ContainerMenteeList>
       {userProfessor && userProfessor.mentees.length > 0 && (
         <>
           <Tittle>Lista de orientandos</Tittle>
@@ -104,6 +105,6 @@ export function MenteesList() {
           setModalIsOpen={setModalIsOpen}
         />
       )}
-    </>
+    </ContainerMenteeList>
   );
 }

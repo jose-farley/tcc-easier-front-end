@@ -124,7 +124,7 @@ export function PastTasks() {
                         } 
                 </Tabela>
             ) : (
-                <Message>Não há nenhuma tarefa anterior</Message>
+                <Message>Não há nenhum registro de tarefa anterior</Message>
             )}
         </ContainerPastTasks>
     );

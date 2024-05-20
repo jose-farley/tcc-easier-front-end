@@ -9,7 +9,7 @@ export function ProfessorMenu(){
         <ProfessorMenuContainer>
              <NavLink to="/"><LogoTCCEasierWhite  src={logo} /></NavLink> 
             <MenuProfessor>
-                <NavLink to="/professor/home"><House size={28} /> <span> Inicio</span></NavLink> 
+                <NavLink to="/professor/"><House size={28} /> <span> Inicio</span></NavLink> 
                 <NavLink to="/professor/reunioes"><UsersThree size={30}/><span> Reuniões</span></NavLink>
                 <NavLink to="/professor/alunos"><GraduationCap size={28}/><span>Alunos</span></NavLink>
                 <NavLink to="/professor/tarefas"><ListChecks size={30}/><span>Tarefas</span></NavLink>

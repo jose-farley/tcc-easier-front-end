@@ -78,7 +78,7 @@ export const MainContent = styled.div`
     padding: 1rem;
     flex-direction: column;
     width: 100vw;
-    justify-content: center;
+    gap: 4rem;
     align-items: center;
     text-align: center;
   

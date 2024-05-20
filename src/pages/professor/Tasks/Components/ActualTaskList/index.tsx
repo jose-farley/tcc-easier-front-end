@@ -129,7 +129,7 @@ export function ActualTaskList() {
                 ) : (
                     <Message>Não há nenhuma tarefa atual.</Message>
                 )
-            ) : null}
+            ) : <Message>Não há nenhuma tarefa atual.</Message>}
         </ContainerActualTasks>
     );
 }
