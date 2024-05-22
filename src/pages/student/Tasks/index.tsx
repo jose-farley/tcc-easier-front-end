@@ -1,5 +1,12 @@
+import { ActualTaskList } from "./components/ActualTaskList";
+import { PastTasks } from "./components/PastTasks";
+import { ContainerContent } from "./style";
+
 export function TasksPage(){
    return (
-    <h1>Tasks</h1>
+      <ContainerContent>
+         <ActualTaskList/>
+         <PastTasks />
+      </ContainerContent>
    )
 }

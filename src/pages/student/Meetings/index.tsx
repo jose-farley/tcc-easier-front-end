@@ -1,5 +1,12 @@
+import { ContainerContent } from "./style";
+import { ActualMeetingsList } from './components/actualMeetings/index';
+import { PastMeetingList } from "./components/pastMeetingList";
+
 export function MeetingsPage(){
    return (
-    <h1>Meetings</h1>
+      <ContainerContent>
+         <ActualMeetingsList />
+         <PastMeetingList />
+      </ContainerContent>
    )
 }
