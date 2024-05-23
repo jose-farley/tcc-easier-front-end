@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { MainContainer, WellComeText } from "./style";
 import axios from "axios";
+import { ActualMeetingsList } from "../Meetings/components/actualMeetings";
+import { ActualTaskList } from "../Tasks/components/ActualTaskList";
+import { AdvisorsPage } from "../Advisors";
+import { Theme } from "./Components/Theme";
 
 
 
@@ -38,12 +42,18 @@ export function HomePage(){
       getStudentInfo()
    },[])
 
-   return (
-      <MainContainer>
-         <WellComeText>Seja bem-vindo {student?.name}</WellComeText>
-         <div>
-
-         </div>
-      </MainContainer>
-   )
+      if(student){
+         return(
+            <MainContainer>
+            <Theme theme={student.theme} description={student.description}   />
+            <ActualTaskList />
+            <ActualMeetingsList />
+         </MainContainer>
+         )
+      }else{
+         <MainContainer>
+            <strong>Carregando...</strong>
+         </MainContainer> 
+      }
+    
 }

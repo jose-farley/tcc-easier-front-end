@@ -7,12 +7,12 @@ export const AlunoMenuContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: ${props => props.theme["green-500"]};
+    background-color: ${props => props.theme["green-700"]};
     width: 18rem;
 
 `
 export const MenuAluno = styled.nav`
-    display: flex;
+       display: flex;
     flex-direction: column;
     gap: 0.5rem;
 
@@ -27,7 +27,7 @@ export const MenuAluno = styled.nav`
         border-radius: 8px;
     }
     a:hover {
-        background-color: ${props => props.theme["green-700"]};
+        background-color: ${props => props.theme["green-500"]};
     }
     a:active{
         background-color: ${props => props.theme["green-700"]};
