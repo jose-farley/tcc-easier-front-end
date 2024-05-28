@@ -16,9 +16,14 @@ export const List = styled.ul`
     width: 20rem;
     flex-direction: column;
     gap: 1rem;
+    justify-content: center;
    
 `
 
+
+interface props {
+    condition:boolean
+}
 export const Item = styled.li`
     display: flex;
     flex-direction: row;
@@ -26,17 +31,20 @@ export const Item = styled.li`
     align-items: center;
 
 `
-interface props {
-    condition:boolean
-}
-export const Status = styled.div<props>`
+
+export const Status = styled.input`
     border: 1px solid transparent;
     height: 1rem;
     width: 1rem;
-    background-color: ${props => props.condition ? '#00B37E' : 'grey'};
+   
 `
 export const Subtitle = styled.strong`
     color:#848484;
 `
-
+export const ButtonRemove = styled.button`
+    width: 5rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+`
 

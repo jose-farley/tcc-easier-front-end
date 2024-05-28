@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { api } from "../../../../../api";
 import { ContainerPastTasks, Message, Subtitle, Tabela } from "./style";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { Modal } from "../../../../../components/Modal/Modal";
 import { ShowTaskList } from "../ActualTaskList/components";
+import { AuthContext } from "../../../../../context/authentication";
 
 interface ITask {
     groupId: string;
@@ -30,8 +31,9 @@ export function PastTasks() {
     const [pastTasks, setPastTasks] = useState<IGroupTask[]>([]);
     const [modalInvites, setModalInvitesIsOpen] = useState(false)
     const [clickedTasks, setClickedTasks] = useState<Array<ITask>>([])
+    const [groupId, setGroupId] = useState("")
+    const {refreshTasks} = useContext(AuthContext)
 
-    
     async function getAllTasks() {
         try {
             const { data } = await api.post("/professor/tarefas/listar", {
@@ -75,7 +77,7 @@ export function PastTasks() {
 
     useEffect(() => {
         getAllTasks();
-    }, []);
+    }, [refreshTasks]);
 
     useEffect(() => {
         getPastTasks();
@@ -98,12 +100,13 @@ export function PastTasks() {
                             <tr key={el.id}>
                                 <td>{el.student.name}</td>
                                 <td  onClick={()=>{
+                                                setGroupId(el.id)
                                                 setClickedTasks(el.tasks)
                                                 setModalInvitesIsOpen(true)
                                             }}>
                                     <ProgressBar
                                         completed={porcentTask(el.tasks)}
-                                        bgColor="#00875F"
+                                        bgColor="#a2a336"
                                         customLabel={`${porcentTask(el.tasks)}%`}
                                         labelColor="#8D8D99"
                                         labelAlignment="outside"
@@ -116,7 +119,7 @@ export function PastTasks() {
                     {
                             (modalInvites)?
                             <Modal
-                                content={<ShowTaskList data={clickedTasks} />}
+                                content={<ShowTaskList data={clickedTasks} groupId={groupId} closeModal={setModalInvitesIsOpen} />}
                                 size='large'
                                 setModalIsOpen={setModalInvitesIsOpen}
                             />

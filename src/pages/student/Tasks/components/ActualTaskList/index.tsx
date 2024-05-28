@@ -36,12 +36,14 @@ export function ActualTaskList() {
     const [groupTasks, setGroupTasks] = useState<IGroupTask[]>([]);
     const [modalInvites, setModalInvitesIsOpen] = useState(false)
     const [clickedTasks, setClickedTasks] = useState<Array<ITask>>([])
+    const [refresh, setRefresh] = useState(false)
+
+
     async function getAllTasks() {
         try {
             const { data } = await api.post("/aluno/tarefas/listar", {
                 id: localStorage.getItem("user.id")
             });
-            console.log(data)
             setGroupTasks(data.data);
         } catch (error) {
             alert("Houve um problema ao listar as tarefas.");
@@ -72,7 +74,7 @@ export function ActualTaskList() {
     function porcentTask(tasks: ITask[]): number {
         const doneCount = tasks.filter((el) => el.status).length;
         const percent = (doneCount * 100) / tasks.length;
-        return percent;
+        return parseFloat(percent.toFixed(1));
     }
 
     function converterFormatoData(data: string): string {
@@ -82,7 +84,7 @@ export function ActualTaskList() {
 
     useEffect(() => {
         getAllTasks();
-    }, []);
+    }, [refresh]);
 
     useEffect(() => {
         getActualTasks();
@@ -125,7 +127,7 @@ export function ActualTaskList() {
                         {
                             (modalInvites)?
                             <Modal
-                                content={<ShowTaskList data={clickedTasks} />}
+                                content={<ShowTaskList data={clickedTasks} refresh={setRefresh} close={setModalInvitesIsOpen} />}
                                 size='large'
                                 setModalIsOpen={setModalInvitesIsOpen}
                             />

@@ -14,6 +14,10 @@ interface IContextAuth{
   role:string
   logar: (props:propsLogin) => Promise<void>;
   deslogar: ()=> Promise<void>;
+  refreshMeeting:boolean
+  refreshTasks:boolean
+  setRefreshMeetings(data:boolean):void
+  setRefreshTasks(data:boolean):void
 }
 
 export const AuthContext = createContext({} as IContextAuth);
@@ -23,12 +27,13 @@ type Props ={
 }
 
 export function AuthFornecedor({children}:Props){
-
+  const [refreshMeeting, setRefreshMeetings] = useState(false)
+  const [refreshTasks, setRefreshTasks] = useState(false)
   const [email, setEmail] = useState('')
   const [role, setRole] = useState('')
   const navigate = useNavigate()
 
-
+  
   async function logar(props:propsLogin):Promise<void>{
 
     try {
@@ -72,7 +77,7 @@ export function AuthFornecedor({children}:Props){
     
   },[]);
   return (
-    <AuthContext.Provider value={{email,logar, deslogar, role}}>
+    <AuthContext.Provider value={{refreshTasks, setRefreshTasks,email, setRefreshMeetings, refreshMeeting,logar, deslogar, role}}>
        {children}
     </AuthContext.Provider>
 

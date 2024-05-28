@@ -3,7 +3,9 @@ import { api } from "../../../../../api";
 import { ContainerPastTasks, Message, Subtitle, Tabela } from "./style";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { Modal } from "../../../../../components/Modal/Modal";
-import { ShowTaskList } from "../ActualTaskList/components";
+import { ShowTaskListPasted } from "./components";
+
+
 
 interface ITask {
     groupId: string;
@@ -108,7 +110,7 @@ export function PastTasks() {
                                             }}>
                                     <ProgressBar
                                         completed={porcentTask(el.tasks)}
-                                        bgColor="#00875F"
+                                        bgColor="#a2a336"
                                         customLabel={`${porcentTask(el.tasks)}%`}
                                         labelColor="#8D8D99"
                                         labelAlignment="outside"
@@ -121,7 +123,11 @@ export function PastTasks() {
                     {
                             (modalInvites)?
                             <Modal
-                                content={<ShowTaskList data={clickedTasks} />}
+                                content={<ShowTaskListPasted data={clickedTasks} refresh={function (data: boolean): void {
+                                    throw new Error("Function not implemented.");
+                                } } close={function (data: boolean): void {
+                                    throw new Error("Function not implemented.");
+                                } } />}
                                 size='large'
                                 setModalIsOpen={setModalInvitesIsOpen}
                             />

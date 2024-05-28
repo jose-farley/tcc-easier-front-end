@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ContainerActualTasks, Message, Subtitle, Tabela } from "./style";
 import { api } from "../../../../../api";
+import { Modal } from "../../../../../components/Modal/Modal";
+import { FormEditMeeting } from "./components";
+import { AuthContext } from "../../../../../context/authentication";
 
 
 interface Meeting {
@@ -38,7 +41,11 @@ interface Mentee {
 export function ActualMeetingsList() {
     const [listMeetings, setListMeetings] = useState<Array<Meeting>>([]);
     const [actualMeetingList, setActualMeetingList] = useState<Array<Meeting>>([]);
+    const [editMeeting, setEditMeeting] = useState<Meeting>();
     const [refresh, setRefresh] = useState<boolean>(false); // Estado para forçar atualização da lista
+    const [modalEdit, setModalEdit] = useState(false)
+
+    const {refreshMeeting, setRefreshMeetings} = useContext(AuthContext)
 
     async function getAllMeetings() {
         try {
@@ -59,7 +66,7 @@ export function ActualMeetingsList() {
 
     useEffect(() => {
         getAllMeetings();
-    }, [refresh]); // Atualizar lista quando o estado 'refresh' mudar
+    }, [refreshMeeting]); // Atualizar lista quando o estado 'refresh' mudar
 
     useEffect(() => {
        
@@ -80,7 +87,10 @@ export function ActualMeetingsList() {
         return `${hours}:${minutes} - ${day}/${month}/${year}`;
     }
    
-
+    function handleClickMeeting(id:string){
+        let result = actualMeetingList.find(el => el.id === id);
+        setEditMeeting(result)
+    }
 
     if(actualMeetingList.length > 0){
         return (
@@ -97,7 +107,9 @@ export function ActualMeetingsList() {
                         <tbody>
                             {actualMeetingList.map(el =>{
                                 return (
-                                    <tr key={el.id}>
+                                    <tr key={el.id} onClick={()=>{
+                                        handleClickMeeting(el.id)
+                                        setModalEdit(true)}}>
                                         <td>{el.student.name}</td>
                                         <td>{el.local}</td>
                                         <td>{formatDateTime(el.due)}</td>
@@ -106,6 +118,15 @@ export function ActualMeetingsList() {
                             })}
                         </tbody>
                     </Tabela>
+                    {
+                        (modalEdit)?
+                        <Modal
+                            content={<FormEditMeeting refresh={setRefreshMeetings} meeting={editMeeting!} setModalIsOpen={setModalEdit}  />}
+                            size='large'
+                            setModalIsOpen={setModalEdit}
+                        />
+                        :null
+                  }
 
                 </ContainerActualTasks>
             )

@@ -10,9 +10,10 @@ import { FormAddTheme } from "../FormAddTheme";
 interface props {
     theme:string 
     description:string
+    refresh(data:boolean):void
 }
 
-export function Theme({theme,description}:props){
+export function Theme({theme,description, refresh}:props){
     const [modalTheme, setModalThemeIsOpen] = useState(false)
     const [modalDescription, setModalDescriptionIsOpen] = useState(false)
     return (
@@ -25,7 +26,7 @@ export function Theme({theme,description}:props){
            { 
                 (modalTheme)?
                     <Modal
-                        content={<FormAddTheme />}
+                        content={<FormAddTheme closeModal={setModalThemeIsOpen} refresh={refresh}  />}
                         size='large'
                         setModalIsOpen={setModalThemeIsOpen}
                     />
@@ -40,7 +41,7 @@ export function Theme({theme,description}:props){
             { 
                 (modalDescription)?
                     <Modal
-                        content={<FormAddDescription />}
+                        content={<FormAddDescription closeModal={setModalDescriptionIsOpen} refresh={refresh} />}
                         size='large'
                         setModalIsOpen={setModalDescriptionIsOpen}
                     />

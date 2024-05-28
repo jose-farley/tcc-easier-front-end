@@ -1,10 +1,11 @@
 import axios from "axios";
 import { BtnAddTask, ButtonSendTask, ContainerShowTasks, FormTask, MaintContainer, RowForm } from "./style";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Plus } from "@phosphor-icons/react";
 import zod from 'zod'
 import { api } from "../../../../../api";
 import { set } from "date-fns";
+import { AuthContext } from "../../../../../context/authentication";
 
 interface ProfessorInvites {
     advisorId:string
@@ -50,8 +51,9 @@ interface ProfessorResponse {
 type FormProps = zod.infer<typeof newAddTaskSchema>
 interface prop {
     setModalIsOpen(data:boolean):void
+    refresh(data:boolean):void
 }
-export function FormAddMeeting({setModalIsOpen}:prop){
+export function FormAddMeeting({setModalIsOpen, refresh}:prop){
    
     const [userProfessor, setUserProfessor] = useState<ProfessorResponse>()
     const [relaodMeentees, setReloadMentees] = useState(false)
@@ -59,7 +61,7 @@ export function FormAddMeeting({setModalIsOpen}:prop){
     const [local, setLocal] = useState('')
     const [dueData, setDueDate] = useState('')
     const [mentee, setMentee] = useState('')
-
+    const { setRefreshMeetings} = useContext(AuthContext)
     async function getAdvisor(){
         try {
             let {data} = await axios.get("http://localhost:8080/professor")
@@ -100,8 +102,7 @@ export function FormAddMeeting({setModalIsOpen}:prop){
         if(dataToSend.local.length<=2) return alert("Você precisa definir um local para a reunião.")
         try {
             let {data} = await api.post("/professor/reunioes", dataToSend)
-
-            console.log(data)
+            setRefreshMeetings((prev:any)=>!prev)
             setModalIsOpen(false)
         } catch (error) {
            return alert("Houve um probelma ao cadastrar a reunião") 
@@ -150,6 +151,7 @@ export function FormAddMeeting({setModalIsOpen}:prop){
                     <input  value={local} onChange={(event)=>{setLocal(event.target.value)}} className='form-control' type="text" id="dataEntrega" name="dataEntrega"/>
                    
                 </RowForm>
+                
                 
                 <ButtonSendTask
                     type="button"

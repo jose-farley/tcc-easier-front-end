@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ContainerActualTasks, Message, Subtitle, Tabela } from "./style";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { api } from "../../../../../api";
 import { Modal } from "../../../../../components/Modal/Modal";
 import { ShowTaskList } from "./components";
+import { AuthContext } from "../../../../../context/authentication";
 
 interface ITask {
     groupId: string;
@@ -31,6 +32,9 @@ export function ActualTaskList() {
     const [groupTasks, setGroupTasks] = useState<IGroupTask[]>([]);
     const [modalInvites, setModalInvitesIsOpen] = useState(false)
     const [clickedTasks, setClickedTasks] = useState<Array<ITask>>([])
+    const [groupId, setGroupId] = useState("")
+
+    const {refreshTasks} = useContext(AuthContext)
     async function getAllTasks() {
         try {
             const { data } = await api.post("/professor/tarefas/listar", {
@@ -66,7 +70,7 @@ export function ActualTaskList() {
     function porcentTask(tasks: ITask[]): number {
         const doneCount = tasks.filter((el) => el.status).length;
         const percent = (doneCount * 100) / tasks.length;
-        return percent;
+        return parseFloat(percent.toFixed(1));
     }
 
     function converterFormatoData(data: string): string {
@@ -76,7 +80,7 @@ export function ActualTaskList() {
 
     useEffect(() => {
         getAllTasks();
-    }, []);
+    }, [refreshTasks]);
 
     useEffect(() => {
         getActualTasks();
@@ -100,6 +104,7 @@ export function ActualTaskList() {
                                 <tr key={el.id}>
                                     <td>{el.student.name}</td>
                                     <td  onClick={()=>{
+                                                setGroupId(el.id)
                                                 setClickedTasks(el.tasks)
                                                 setModalInvitesIsOpen(true)
                                             }}>
@@ -119,7 +124,7 @@ export function ActualTaskList() {
                         {
                             (modalInvites)?
                             <Modal
-                                content={<ShowTaskList data={clickedTasks} />}
+                                content={<ShowTaskList groupId={groupId} data={clickedTasks} closeModal={setModalInvitesIsOpen} />}
                                 size='large'
                                 setModalIsOpen={setModalInvitesIsOpen}
                             />

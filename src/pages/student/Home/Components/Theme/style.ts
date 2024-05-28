@@ -40,5 +40,6 @@ export const ButtonEdit = styled.strong`
 
 
 export const Text = styled.span`
+height: 4rem;
     color:#848484;
 `

@@ -1,9 +1,10 @@
 import axios from "axios";
 import { BtnAddTask, ButtonSendTask, ContainerShowTasks, FormTask, MaintContainer, RowForm } from "./style";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Plus } from "@phosphor-icons/react";
 import zod from 'zod'
 import { api } from "../../../../../api";
+import { AuthContext } from "../../../../../context/authentication";
 
 interface ProfessorInvites {
     advisorId:string
@@ -57,7 +58,7 @@ export function FormAddTask({setModalIsOpen}:prop){
     const [actualTask, setActualTask] = useState('')
     const [dueData, setDueDate] = useState('')
     const [mentee, setMentee] = useState('')
-
+    const {setRefreshTasks} = useContext(AuthContext)
     async function getAdvisor(){
         try {
             let {data} = await axios.get("http://localhost:8080/professor")
@@ -96,6 +97,7 @@ export function FormAddTask({setModalIsOpen}:prop){
                 mentee:mentee,
                 task: [...tasks]
             }) 
+            setRefreshTasks((prev)=>!prev)
             setModalIsOpen(false)
         } catch (error) {
             alert("Houve um problema ao se comunicar com o servidor.")

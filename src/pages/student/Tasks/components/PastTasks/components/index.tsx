@@ -20,7 +20,7 @@ interface ISoloTask {
     status: boolean;
 }
 
-export function ShowTaskList({ data: initialData, refresh, close }: Props) {
+export function ShowTaskListPasted({ data: initialData, refresh, close }: Props) {
     const [data, setData] = useState<Array<ITask>>(initialData);
     const [tasks, setTasks] = useState<Array<ISoloTask>>([]);
 
@@ -71,10 +71,11 @@ export function ShowTaskList({ data: initialData, refresh, close }: Props) {
                             onChange={() => handleTicktask(el.id, el.status)}
                             type="checkbox"
                             checked={el.status}
+                            disabled
                         />
                     </Item>
                 ))}
-                <ButtonEdit onClick={handleSendTasks} className="btn btn-success">
+                <ButtonEdit disabled onClick={handleSendTasks} className="btn btn-success">
                     Salvar
                 </ButtonEdit>
             </List>

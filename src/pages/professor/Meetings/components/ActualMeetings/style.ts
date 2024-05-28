@@ -40,6 +40,7 @@ export const Tabela = styled.table`
 
    tbody {
         tr {
+           
            text-align: center;
             display: flex;
             justify-content: space-between;
@@ -49,7 +50,7 @@ export const Tabela = styled.table`
                 width: 14rem;
                 text-align: center;
                 line-height: 1.6;
-                cursor: default;
+                cursor: pointer;
             }
         }
    }

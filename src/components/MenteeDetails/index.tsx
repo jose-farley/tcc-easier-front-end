@@ -21,7 +21,7 @@ interface ResponseModel {
 
 
 export function StudentDetails ({id, setModalIsOpen}:props){
-    console.log(id)
+    
     const [student, setStudent] = useState<ResponseModel>()
     async function getStudents(){
         try {
@@ -47,10 +47,10 @@ export function StudentDetails ({id, setModalIsOpen}:props){
         <ContainerStudentInfo>
             <Title>{student?.name}</Title>
             <Row>
-                <Title>(Tema):</Title><span>{student?.theme}</span>
+                <Title>(Tema):</Title><p>{student?.theme}</p>
             </Row>
             <Row>
-                <Title>(Descrição):</Title><span>{student?.description}</span>
+                <Title>(Descrição):</Title><p>{student?.description}</p>
             </Row>
            
         </ContainerStudentInfo>

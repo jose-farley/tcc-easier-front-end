@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const ContainerStudentInfo = styled.div`
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+   
     border-radius: 8px;
     min-width: 24rem;
     margin-top: 2rem;
@@ -18,7 +18,8 @@ export const Row = styled.div`
     display: flex;
     max-width: 20rem;
     text-align: justify;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 1rem;
  
 
 `
