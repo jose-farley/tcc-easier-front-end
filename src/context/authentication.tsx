@@ -4,6 +4,7 @@ import { api } from '../api';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+
 interface propsLogin {
   email:string  
   password:string
@@ -65,6 +66,8 @@ export function AuthFornecedor({children}:Props){
     localStorage.removeItem('auth.token');
     localStorage.removeItem('user.email');
     setEmail('')
+    navigate("/")
+    
   }
   
   useEffect(()=>{
