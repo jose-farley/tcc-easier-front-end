@@ -1,10 +1,14 @@
 import { useContext, useEffect, useState } from "react";
-import { ButtonRemoveAccount, CaixaDeTexto, ContainerForm, MainContent, Row, SwitchContainer, SwitchInput, SwitchLabel, Tittle } from "./style";
+import { ButtonEditPassword, ButtonRemoveAccount, CaixaDeTexto, CaixaDeTextoEmail, ContainerForm, MainContent, Row, SwitchContainer, SwitchInput, SwitchLabel, Tittle } from "./style";
 import { api } from "../../../api";
 import { EnvelopeSimple, Lock, SignOut } from '@phosphor-icons/react';
 import { Modal } from "../../../components/Modal/Modal";
 import { FormRemoveAccount } from "./components/formRemoveAccount";
 import { AuthContext } from "../../../context/authentication";
+import * as zod from "zod"
+import { FormEditPassword } from "./components/formEditPassword";
+
+
 interface ProfessorInvites {
     advisorId:string
     createdAt:string
@@ -22,6 +26,8 @@ interface ProfessorResponse {
     professorInvites:Array<ProfessorInvites>
 
  }
+
+
 export function ProfessorSettingPage(){
     const [userProfessor, setUserProfessor] = useState<ProfessorResponse>()
     const [professors, setProfessor] = useState<Array<ProfessorResponse>>([])
@@ -29,6 +35,10 @@ export function ProfessorSettingPage(){
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const {deslogar} = useContext(AuthContext)
+
+    
+
+
     async function getAdvisor(){
         try {
               let {data} = await api.get("/professor")
@@ -59,7 +69,9 @@ export function ProfessorSettingPage(){
             return alert("Houve um problema ao alterar o status.")
         }
      }
-     
+     function handleClickEditPassword (){
+        setModalIsOpen(true)
+     }
 
      if(userProfessor){
         return (
@@ -68,12 +80,11 @@ export function ProfessorSettingPage(){
                 <Tittle>{userProfessor.name}</Tittle>
                 <ContainerForm>
                     <Row>
-                       <span> E-mail: </span>
-                        <CaixaDeTexto className="form-control" value={userProfessor.email} type="text"  disabled/>
-                    </Row>
-                    <Row>
-                        <span>Senha:</span>
-                        <CaixaDeTexto className="form-control" value={"********"} type="text"  disabled/>
+                        <span>Alterar senha:</span>
+                        <ButtonEditPassword 
+                            onClick={handleClickEditPassword}
+                            className="btn btn-success">Alterar
+                        </ButtonEditPassword>
                     </Row>
                     <Row>
                        <span>Recebendo orientandos:</span> 
@@ -96,14 +107,14 @@ export function ProfessorSettingPage(){
                 </Row>
                
                 {
-                (modalIsOpen)?
-                <Modal
-                    content={<FormRemoveAccount id={userProfessor.id} />}
-                    size='large'
-                    setModalIsOpen={setModalIsOpen}
-                />
-                :null
-            }
+                    (modalIsOpen)?
+                    <Modal
+                        content={<FormEditPassword closeModal={setModalIsOpen} />}
+                        size='large'
+                        setModalIsOpen={setModalIsOpen}
+                    />
+                    :null
+                }
             </MainContent>
         )
      }else{

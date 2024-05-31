@@ -26,6 +26,7 @@ export interface Student {
 export function HomePage(){
    const [student, setStudent] = useState<Student>()
    const [refresh, setRefresh] = useState(false)
+   
    async function getStudentInfo(){
       try {
        let {data} = await  axios.get("http://localhost:8080/aluno") 

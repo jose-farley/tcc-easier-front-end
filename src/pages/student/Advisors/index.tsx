@@ -197,7 +197,9 @@ export function AdvisorsPage() {
             <ContainerInvites>
               {
                 (student!.invites.length === 0) ?
-                  null :
+                <DivNoInvites>
+                  <MsgInvite>Não há nenhum orientador disponível no momento.</MsgInvite>
+                </DivNoInvites> :
                   (
                     <>
                       <Text>Você possui {student!.invites.length} convite(s) de orientação.</Text>
