@@ -15,7 +15,12 @@ export const MenuAluno = styled.nav`
        display: flex;
     flex-direction: column;
     gap: 0.5rem;
-
+    .unactive {
+        background-color: ${props => props.theme["green-700"]};
+    }
+    .active {
+        background-color: ${props => props.theme["green-500"]};
+    }
     a{
         text-decoration: none;
         display: flex;

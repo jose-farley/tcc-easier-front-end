@@ -66,7 +66,7 @@ export function ProfessorInviteList ({reloadFunction, closeModal}:Props){
               professorId:localStorage.getItem("user.id")
            }
            )
-           console.log("aqui", data)
+           
            if(data.has_error) return alert("Houve um problema ao se comunicar com o servidor")
            reloadFunction((prevState: any) => !prevState)
            setReloadProfessorData(prevState => !prevState);

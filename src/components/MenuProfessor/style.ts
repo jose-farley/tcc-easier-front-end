@@ -17,7 +17,9 @@ export const MenuProfessor = styled.nav`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-
+    .active {
+        background-color: ${props => props.theme["green-500"]};
+    }
     a{
         text-decoration: none;
         display: flex;
@@ -29,6 +31,9 @@ export const MenuProfessor = styled.nav`
         border-radius: 8px;
     }
     a:hover {
+        background-color: ${props => props.theme["green-500"]};
+    }
+    a:checked {
         background-color: ${props => props.theme["green-500"]};
     }
     a:active{

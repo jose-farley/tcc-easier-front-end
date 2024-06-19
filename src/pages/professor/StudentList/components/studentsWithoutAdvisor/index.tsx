@@ -6,7 +6,7 @@ import { ProfessorInviteList } from "../../../../../components/ProfessorInviteLi
 import { ButtonRequest, Tabela } from "../../style"
 import { InviteStudent } from "../../../../../components/InviteStudent"
 import { Title } from "../../../../../components/InviteStudent/style"
-import {Text} from './style'
+import {ContainerContent, Text} from './style'
 interface ResponseModel {
     name:string
     email:string
@@ -79,7 +79,7 @@ export function StudentWithoutAdvisor(){
 
     if(students.length > 0){
         return (
-            <>
+            <ContainerContent>
                 <Tittle>Estudantes sem orientador</Tittle>
                 <Tabela>
                     <thead>
@@ -121,7 +121,7 @@ export function StudentWithoutAdvisor(){
                         :null
                     }
                 </Tabela>  
-            </>
+            </ContainerContent>
                
         ) 
     }else{

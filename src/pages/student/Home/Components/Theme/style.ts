@@ -7,23 +7,25 @@ export const ContainerContent = styled.div`
     gap: 1rem;
 `
 export const ContainerTheme = styled.div`
-    display: flex;
+   display: flex;
     flex-direction: column;
     width: 20rem;
     height: 15rem;
-   
+   overflow-y: auto;
     text-align: center;
     align-items: center;
-    gap: 2rem;
+    justify-content: space-between;
+    
 `
 export const ContainerDescription = styled.div`
     display: flex;
     flex-direction: column;
     width: 20rem;
-    height: 15rem; 
+    height: 15rem;
+   overflow-y: auto;
     text-align: center;
     align-items: center;
-    gap: 2rem;
+    justify-content: space-between;
 `
 export const Title = styled.strong`
     background-color: ${props => props.theme["green-500"]};
@@ -40,6 +42,8 @@ export const ButtonEdit = styled.strong`
 
 
 export const Text = styled.span`
-height: 4rem;
+    height: 14rem;
+    padding: 1rem;
+    overflow-y: auto;
     color:#848484;
 `
